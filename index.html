@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click the Box Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+    h1 {
+      background: #333;
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+    #gameArea {
+      margin: 20px auto;
+      width: 500px;
+      height: 500px;
+      background: white;
+      border: 2px solid #333;
+      position: relative;
+      overflow: hidden;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      background: red;
+      position: absolute;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    #score {
+      font-size: 20px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Count the Box!</h1>
+  <p id="score">Score: 0</p>
+  <div id="gameArea"></div>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+
+    function spawnBox() {
+      const box = document.createElement('div');
+      box.classList.add('box');
+
+      const x = Math.floor(Math.random() * (gameArea.clientWidth - 50));
+      const y = Math.floor(Math.random() * (gameArea.clientHeight - 50));
+
+      box.style.left = x + 'px';
+      box.style.top = y + 'px';
+
+      box.addEventListener('click', () => {
+        score++;
+        scoreDisplay.textContent = "Score: " + score;
+        gameArea.removeChild(box);
+        spawnBox();
+      });
+
+      gameArea.appendChild(box);
+    }
+
+    spawnBox();
+  </script>
+</body>
+</html>
