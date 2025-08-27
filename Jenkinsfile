@@ -20,7 +20,7 @@ pipeline{
 	}
 	stage('deploy'){
               steps{
-                sh 'mv Shahid/* ../../../../www/html'
+                sh 'mv multibranch_jenkins/* ../../../../www/html'
 	      }
 	}
      
