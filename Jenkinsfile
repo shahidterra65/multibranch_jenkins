@@ -40,8 +40,8 @@ pipeline {
             steps {
                 script {
                     def containerName = "myapp_container"
-                    echo " Running new container on port 3000:80..."
-                    sh "docker run -d --name ${containerName} -p 3000:80 myapp:latest"
+                    echo " Running new container on port 2377:80..."
+                    sh "docker run -d --name ${containerName} -p 2377:80 myapp:latest"
                 }
             }
         }
